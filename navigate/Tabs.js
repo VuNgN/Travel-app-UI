@@ -17,34 +17,51 @@ export default function MyTabs() {
         tabBarShowLabel: false,
         headerShown: false,
         tabBarActiveTintColor: colors.orange,
-        tabBarStyle:{
+        tabBarStyle: {
           borderTopLeftRadius: 20,
           borderTopRightRadius: 20,
           height: 50,
-        }
+        },
       }}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarIcon: ({focused}) => <Ionicons name="ios-home-sharp" color={focused ? colors.orange : colors.gray} size={32} />,
+          tabBarIcon: ({focused}) => (
+            <Ionicons
+              name="ios-home-sharp"
+              color={focused ? colors.orange : colors.gray}
+              size={32}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Like"
         component={LikeScreen}
         options={{
-          tabBarIcon: ({focused}) => <Ionicons name="ios-heart-sharp" color={focused ? colors.orange : colors.gray} size={32} />,
+          tabBarIcon: ({focused}) => (
+            <Ionicons
+              name="ios-heart-sharp"
+              color={focused ? colors.orange : colors.gray}
+              size={32}
+            />
+          ),
         }}
       />
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
         options={{
-          tabBarIcon: ({focused}) => <Ionicons name="ios-person" color={focused ? colors.orange : colors.gray} size={32} />,
+          tabBarIcon: ({focused}) => (
+            <Ionicons
+              name="ios-person"
+              color={focused ? colors.orange : colors.gray}
+              size={32}
+            />
+          ),
         }}
       />
     </Tab.Navigator>
   );
 }
-

@@ -1,14 +1,14 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
 const TravelScreen = () => {
-    return (
-        <View>
-            <Text>Travelllllll</Text>
-        </View>
-    )
-}
+  return (
+    <View>
+      <Text>Travelllllll</Text>
+    </View>
+  );
+};
 
-export default TravelScreen
+export default TravelScreen;
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
