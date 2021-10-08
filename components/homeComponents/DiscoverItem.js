@@ -1,28 +1,66 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../assets/colors/colors';
 
 const activitiesCategories = ({item, index, length}) => {
   return (
-    <View
-      style={[styles.container, index !== length - 1 && styles.marginRight]}>
-      <Text style={[styles.text, index === 0 && {color: colors.orange}]}>
-        {item.title}
-      </Text>
-    </View>
+    <TouchableOpacity activeOpacity={0.7}>
+      <ImageBackground
+        source={item.image}
+        style={[
+          styles.background,
+          index !== 0 && styles.marginLeft,
+          index === length - 1 && styles.marginRight,
+        ]}
+        imageStyle={{borderRadius: 20}}>
+        <Text style={styles.title}>{item.title}</Text>
+        <View style={styles.locationWrapper}>
+          <MaterialIcons name="location-on" color={colors.while} size={20} />
+          <Text style={styles.location}>{item.location}</Text>
+        </View>
+      </ImageBackground>
+    </TouchableOpacity>
   );
 };
 
 export default activitiesCategories;
 
 const styles = StyleSheet.create({
-  container: {},
-  marginRight: {
-    marginRight: 30,
+  background: {
+    width: 170,
+    height: 250,
+    justifyContent: 'flex-end',
   },
-  text: {
-    fontSize: 16,
-    fontFamily: 'Lato-Regular',
-    color: colors.gray,
+  marginLeft: {
+    marginLeft: 20,
+  },
+  marginRight: {
+    marginRight: 40,
+  },
+  title: {
+    marginHorizontal: 10,
+    fontFamily: 'Lato-Bold',
+    fontSize: 18,
+    color: colors.while,
+  },
+  locationWrapper: {
+    flexDirection: 'row',
+    marginLeft: 10,
+    marginTop: 7,
+    marginBottom: 17,
+    alignItems: 'center',
+  },
+  location: {
+    marginLeft: 5,
+    fontSize: 12,
+    fontFamily: 'Lato-Bold',
+    color: colors.while,
   },
 });

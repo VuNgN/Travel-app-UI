@@ -15,7 +15,7 @@ import DiscoverCategories from '../components/homeComponents/DiscoverCategories'
 import DiscoverItem from '../components/homeComponents/DiscoverItem';
 // Data
 import discoverCategoriesData from '../assets/datas/discoverCategoriesData';
-// import discoverData from '../assets/datas/discoverData';
+import discoverData from '../assets/datas/discoverData';
 
 const HomeScreen = () => {
   return (
@@ -32,32 +32,38 @@ const HomeScreen = () => {
         </TouchableOpacity>
       </SafeAreaView>
       <Text style={styles.textH1Title}>Discover</Text>
-      <FlatList
-        data={discoverCategoriesData}
-        renderItem={({item, index}) => (
-          <DiscoverCategories
-            item={item}
-            index={index}
-            length={discoverCategoriesData.length}
-          />
-        )}
-        keyExtractor={item => item.id}
-        horizontal
-        style={styles.discoverCategories}
-      />
-      {/* <FlatList
-        data={discoverData}
-        renderItem={({item, index}) => (
-          <DiscoverItem
-            item={item}
-            index={index}
-            length={discoverData.length}
-          />
-        )}
-        keyExtractor={item => item.id}
-        horizontal
-        style={styles.discoverCategories}
-      /> */}
+      <View>
+        <FlatList
+          data={discoverCategoriesData}
+          renderItem={({item, index}) => (
+            <DiscoverCategories
+              item={item}
+              index={index}
+              length={discoverCategoriesData.length}
+            />
+          )}
+          keyExtractor={item => item.id}
+          horizontal
+          style={styles.discoverCategories}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+      <View style={styles.discoverItemWrapper}>
+        <FlatList
+          data={discoverData}
+          renderItem={({item, index}) => (
+            <DiscoverItem
+              item={item}
+              index={index}
+              length={discoverData.length}
+            />
+          )}
+          keyExtractor={item => item.id}
+          horizontal
+          style={styles.discoverItem}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
     </View>
   );
 };
@@ -99,5 +105,11 @@ const styles = StyleSheet.create({
   discoverCategories: {
     paddingLeft: _MARGIN_LEFT,
     marginTop: 20,
+  },
+  discoverItemWrapper: {
+    marginTop: 20,
+  },
+  discoverItem: {
+    paddingLeft: _MARGIN_LEFT,
   },
 });
