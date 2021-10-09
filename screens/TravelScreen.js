@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   backIconBotton: {
-    marginTop: 30,
+    marginTop: 50,
     marginLeft: 20,
     width: 40,
     height: 40,
