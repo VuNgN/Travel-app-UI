@@ -55,7 +55,9 @@ const TravelScreen = ({route, navigation}) => {
         <View style={styles.descriptionWrapper}>
           <Text style={styles.textH2Title}>Description</Text>
 
-          <Text style={styles.description} numberOfLines={4}>
+          <Text
+            style={[styles.description, height <= 700 && {display: 'none'}]}
+            numberOfLines={4}>
             {item.description}
           </Text>
           <View style={styles.infoWrapper}></View>
