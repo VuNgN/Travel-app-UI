@@ -7,6 +7,7 @@ import {
   Image,
   TouchableOpacity,
   FlatList,
+  ScrollView,
 } from 'react-native';
 //assets
 import colors from '../assets/colors/colors';
@@ -15,12 +16,14 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import DiscoverCategories from '../components/homeComponents/DiscoverCategories';
 import DiscoverItem from '../components/homeComponents/DiscoverItem';
 import ActivitiesCategories from '../components/homeComponents/ActivitiesCategories';
+import LearnmoreItem from '../components/homeComponents/LearnmoreItem';
 // Data
 import discoverCategoriesData from '../assets/datas/discoverCategoriesData';
 import discoverData from '../assets/datas/discoverData';
 import activitiesData from '../assets/datas/activitiesData';
+import learnMoreData from '../assets/datas/learnMoreData';
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
       <SafeAreaView style={styles.userSwrapper}>
@@ -34,56 +37,79 @@ const HomeScreen = () => {
           />
         </TouchableOpacity>
       </SafeAreaView>
-      <Text style={styles.textH1Title}>Discover</Text>
-      <View>
-        <FlatList
-          data={discoverCategoriesData}
-          renderItem={({item, index}) => (
-            <DiscoverCategories
-              item={item}
-              index={index}
-              length={discoverCategoriesData.length}
-            />
-          )}
-          keyExtractor={item => item.id}
-          horizontal
-          style={styles.discoverCategories}
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
-      <View style={styles.discoverItemWrapper}>
-        <FlatList
-          data={discoverData}
-          renderItem={({item, index}) => (
-            <DiscoverItem
-              item={item}
-              index={index}
-              length={discoverData.length}
-            />
-          )}
-          keyExtractor={item => item.id}
-          horizontal
-          style={styles.discoverItem}
-          showsHorizontalScrollIndicator={false}
-        />
-      </View>
-      <Text style={styles.textH2Title}>Activites</Text>
-      <View style={styles.activitiesWrapper}>
-        <FlatList
-          data={activitiesData}
-          renderItem={({item, index}) => (
-            <ActivitiesCategories
-              item={item}
-              index={index}
-              length={activitiesData.length}
-            />
-          )}
-          keyExtractor={item => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          style={styles.activities}
-        />
-      </View>
+      <ScrollView
+        onScroll={event => {
+          console.log(event.currentTarget);
+        }}>
+        <Text style={styles.textH1Title}>Discover</Text>
+        <View>
+          <FlatList
+            data={discoverCategoriesData}
+            renderItem={({item, index}) => (
+              <DiscoverCategories
+                item={item}
+                index={index}
+                length={discoverCategoriesData.length}
+              />
+            )}
+            keyExtractor={item => item.id}
+            horizontal
+            style={styles.discoverCategories}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <View style={styles.discoverItemWrapper}>
+          <FlatList
+            data={discoverData}
+            renderItem={({item, index}) => (
+              <DiscoverItem
+                item={item}
+                index={index}
+                length={discoverData.length}
+                navigation={navigation}
+              />
+            )}
+            keyExtractor={item => item.id}
+            horizontal
+            style={styles.discoverItem}
+            showsHorizontalScrollIndicator={false}
+          />
+        </View>
+        <Text style={styles.textH2Title}>Activites</Text>
+        <View style={styles.activitiesWrapper}>
+          <FlatList
+            data={activitiesData}
+            renderItem={({item, index}) => (
+              <ActivitiesCategories
+                item={item}
+                index={index}
+                length={activitiesData.length}
+              />
+            )}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.activities}
+          />
+        </View>
+        <Text style={styles.textH2Title}>Learn More</Text>
+        <View style={styles.learnmoreWrapper}>
+          <FlatList
+            data={learnMoreData}
+            renderItem={({item, index, length}) => (
+              <LearnmoreItem
+                item={item}
+                index={index}
+                length={learnMoreData.length}
+              />
+            )}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            style={styles.learnMore}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };
@@ -102,6 +128,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: _MARGIN_LEFT,
     alignItems: 'center',
+    marginBottom: 20,
   },
   menuIconSwrapper: {},
   userImageSwrapper: {
@@ -116,7 +143,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   textH1Title: {
-    marginTop: 30,
+    marginTop: 10,
     marginLeft: _MARGIN_LEFT,
     fontFamily: 'Lato-Bold',
     fontSize: 32,
@@ -143,6 +170,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   activities: {
+    paddingLeft: _MARGIN_LEFT,
+  },
+  learnmoreWrapper: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  learnMore: {
     paddingLeft: _MARGIN_LEFT,
   },
 });

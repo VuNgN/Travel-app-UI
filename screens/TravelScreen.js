@@ -1,10 +1,13 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 
-const TravelScreen = () => {
+const TravelScreen = ({route, navigation}) => {
+  const {item} = route.params;
   return (
     <View>
-      <Text>Travelllllll</Text>
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Text>{item.title}</Text>
+      </TouchableOpacity>
     </View>
   );
 };

@@ -9,9 +9,13 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import colors from '../../assets/colors/colors';
 
-const activitiesCategories = ({item, index, length}) => {
+const activitiesCategories = ({item, index, length, navigation}) => {
   return (
-    <TouchableOpacity activeOpacity={0.7}>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      onPress={() => {
+        navigation.navigate('TravelStack', {item: item});
+      }}>
       <ImageBackground
         source={item.image}
         style={[

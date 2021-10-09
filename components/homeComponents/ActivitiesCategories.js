@@ -1,5 +1,6 @@
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import colors from '../../assets/colors/colors';
 
 const ActivitiesCategories = ({item, index, length}) => {
   return (
@@ -42,5 +43,8 @@ const styles = StyleSheet.create({
   image: {},
   text: {
     marginTop: 5,
+    color: colors.gray,
+    fontFamily: 'Lato-Regular',
+    fontSize: 12,
   },
 });
