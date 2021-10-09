@@ -8,14 +8,17 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
+//assets
 import colors from '../assets/colors/colors';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 // Component
 import DiscoverCategories from '../components/homeComponents/DiscoverCategories';
 import DiscoverItem from '../components/homeComponents/DiscoverItem';
+import ActivitiesCategories from '../components/homeComponents/ActivitiesCategories';
 // Data
 import discoverCategoriesData from '../assets/datas/discoverCategoriesData';
 import discoverData from '../assets/datas/discoverData';
+import activitiesData from '../assets/datas/activitiesData';
 
 const HomeScreen = () => {
   return (
@@ -64,6 +67,23 @@ const HomeScreen = () => {
           showsHorizontalScrollIndicator={false}
         />
       </View>
+      <Text style={styles.textH2Title}>Activites</Text>
+      <View style={styles.activitiesWrapper}>
+        <FlatList
+          data={activitiesData}
+          renderItem={({item, index}) => (
+            <ActivitiesCategories
+              item={item}
+              index={index}
+              length={activitiesData.length}
+            />
+          )}
+          keyExtractor={item => item.id}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.activities}
+        />
+      </View>
     </View>
   );
 };
@@ -102,6 +122,13 @@ const styles = StyleSheet.create({
     fontSize: 32,
     color: colors.darktext,
   },
+  textH2Title: {
+    marginTop: 30,
+    marginLeft: _MARGIN_LEFT,
+    fontFamily: 'Lato-Bold',
+    fontSize: 24,
+    color: colors.darktext,
+  },
   discoverCategories: {
     paddingLeft: _MARGIN_LEFT,
     marginTop: 20,
@@ -110,6 +137,12 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   discoverItem: {
+    paddingLeft: _MARGIN_LEFT,
+  },
+  activitiesWrapper: {
+    marginTop: 20,
+  },
+  activities: {
     paddingLeft: _MARGIN_LEFT,
   },
 });
